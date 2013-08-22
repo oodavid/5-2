@@ -1,0 +1,9 @@
+package com.example.myandroid;
+
+/*
+	RUN WHEN YOU CLICK NOTIFICATION
+	RUN WHEN YOU RUN APP
+
+		SELECT DIET-DAY(S)
+		SAVE
+*/
