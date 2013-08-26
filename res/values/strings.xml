@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Alarm Demo</string>
-	<string name="alarm_hello">The alarm will start in five seconds.</string>
-	<string name="stop_alarm">Stop Alarm</string>
+	<string name="app_name">5-2</string>
+	<!-- Settings Title -->
+	<string name="settings_title">Select the days you want to diet</string>
 	<!-- Days of the week -->
 	<string name="monday">Monday</string>
 	<string name="tuesday">Tuesday</string>
@@ -11,19 +11,6 @@
 	<string name="friday">Friday</string>
 	<string name="saturday">Saturday</string>
 	<string name="sunday">Sunday</string>
-
-
-    <string-array name="planets_array">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
-    </string-array>
-    
 	<!-- Save -->
-	<string name="save">Save</string>
+	<string name="settings_save">Save</string>
 </resources>

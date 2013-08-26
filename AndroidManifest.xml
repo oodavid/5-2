@@ -4,19 +4,21 @@
       android:versionCode="1"
       android:versionName="1.0">
 
+    <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="10"/>
+
     <application android:label="@string/app_name">
 
         <!-- This activity is launched when the app is launched -->
-        <activity android:name=".AlarmMainActivity"
+        <activity android:name=".SettingsActivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <!-- This activity is the activity that will be launched by the alarm -->
-        <activity android:name=".AlarmReceiverActivity" />
-        
+
+        <!-- Service: Figures out whether to show or destroy notifications -->
+        <service android:name=".NotificationService" />
+
     </application>
 </manifest>
