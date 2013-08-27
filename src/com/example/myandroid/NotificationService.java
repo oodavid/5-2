@@ -46,8 +46,8 @@ public class NotificationService extends Service {
 
 			// Set the "Latest Event Info" to create the content when we view it...
 			// NB: We also assign an intent which is fired when we click the notification
-			CharSequence	contentTitle		= "My notification";
-			CharSequence	contentText			= "Hello World!";
+			CharSequence	contentTitle		= "Today is a diet day";
+			CharSequence	contentText			= "600 kcal (men) 500kcal (women)";
 			Intent			notificationIntent	= new Intent(this, SettingsActivity.class);
 			PendingIntent	contentIntent		= PendingIntent.getActivity(this, 0, notificationIntent, 0);
 			notification.setLatestEventInfo(getApplicationContext(), contentTitle, contentText, contentIntent);
