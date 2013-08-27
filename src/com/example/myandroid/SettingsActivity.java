@@ -22,7 +22,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.widget.CheckBox;
 import android.widget.Button;
-import android.util.Log;
 
 public class SettingsActivity extends Activity {
 
