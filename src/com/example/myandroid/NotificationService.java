@@ -46,13 +46,13 @@ public class NotificationService extends Service {
 			// Create a notification Object
 			// NB: The tickertext appears in the notification BAR when first added
 			int				icon			= R.drawable.icon;
-			CharSequence	tickerText		= "Diet Day!";
+			CharSequence	tickerText		= "Put the fork down, it's a Diet Day!";
 			long			when			= System.currentTimeMillis();
 			Notification	notification	= new Notification(icon, tickerText, when);
 
 			// Set the "Latest Event Info" to create the content when we view it...
 			// NB: We also assign an intent which is fired when we click the notification
-			CharSequence	contentTitle		= "Put the fork down, it's a diet day";
+			CharSequence	contentTitle		= "FAT, SO?";
 			CharSequence	contentText			= "600 kcal (men) 500kcal (women)";
 			Intent			notificationIntent	= new Intent(this, SettingsActivity.class);
 			PendingIntent	contentIntent		= PendingIntent.getActivity(this, 0, notificationIntent, 0);
