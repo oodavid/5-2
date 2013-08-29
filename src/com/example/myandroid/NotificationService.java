@@ -1,14 +1,16 @@
 package com.example.myandroid;
 
 import android.app.Service;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Binder;
 import android.os.IBinder;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
+import android.util.Log;
 import java.util.Calendar;
 
 public class NotificationService extends Service {
@@ -17,6 +19,10 @@ public class NotificationService extends Service {
 	private static final int NOTIFICATION_ID = 1;
  
 	@Override public int onStartCommand(Intent intent, int flags, int startId) {
+
+		//
+		// Notification
+		//
 
 		// Setup
 		NotificationManager	nm			= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -46,7 +52,7 @@ public class NotificationService extends Service {
 
 			// Set the "Latest Event Info" to create the content when we view it...
 			// NB: We also assign an intent which is fired when we click the notification
-			CharSequence	contentTitle		= "Today is a diet day";
+			CharSequence	contentTitle		= "Put the fork down, it's a diet day";
 			CharSequence	contentText			= "600 kcal (men) 500kcal (women)";
 			Intent			notificationIntent	= new Intent(this, SettingsActivity.class);
 			PendingIntent	contentIntent		= PendingIntent.getActivity(this, 0, notificationIntent, 0);
@@ -63,6 +69,28 @@ public class NotificationService extends Service {
 			// Cancel the notification
 			nm.cancel(NOTIFICATION_ID);
 		}
+
+		//
+		// Check again tomorrow...
+		//		http://code4reference.com/2012/07/android-homescreen-widget-with-alarmmanager/
+		//
+		
+		// Create a calendar for just after midnight
+		Calendar todayMidnight = Calendar.getInstance();
+		todayMidnight.add(Calendar.DATE, 1);
+		todayMidnight.set(Calendar.HOUR_OF_DAY, 0);
+		todayMidnight.set(Calendar.MINUTE, 1);
+		todayMidnight.set(Calendar.SECOND, 0);
+		// Create a repeating alarm, technically the repetition is a fallback
+		// as this code will execute again and override the previous alarm!
+		AlarmManager am=(AlarmManager)getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+		Intent i = new Intent(getApplicationContext(), BootReceiver.class);
+		PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(), 0, i, 0);
+		am.setRepeating(AlarmManager.RTC, todayMidnight.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pi);
+
+		//
+		// Fin
+		//
 
 		// There are a few options as to what to return
 		// I'm not 100% that this is the correct one (for lack of understanding)
